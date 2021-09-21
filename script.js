@@ -1,4 +1,5 @@
-const querySnapshot = await getDocs(collection(db, "items"));
-        querySnapshot.forEach((doc) => {
+db.collection("users").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
         console.log(`${doc.id} => ${doc.data()}`);
     });
+});
