@@ -11,44 +11,12 @@
         integrity="sha384-l0/0sn63N3mskDgRYJZA6Mogihu0VY3CusdLMiwpJ9LFPklOARUcOiWEIGGmFELx"
         crossorigin="anonymous">
     </script>
-   
-    
+   <script type="module" src ="./firebase.js"></script>
+    <script type="module" src="./script.js"></script>    
 
     
 </head>
 <body>
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-analytics.js";
-        import {getFirestore} from "https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore.js";
-        import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore.js"; 
-    
-        const firebaseConfig = {
-            apiKey: "AIzaSyCFNMjx9XxMQ84fh8eBRf9z5facg0lZeTs",
-            authDomain: "clone-two-10bdb.firebaseapp.com",
-            projectId: "clone-two-10bdb",
-            storageBucket: "clone-two-10bdb.appspot.com",
-            messagingSenderId: "889191989328",
-            appId: "1:889191989328:web:d9585bc0544618355a9155",
-            measurementId: "G-434W2M2DF3"
-            };
-    
-            // Initialize Firebase
-            const app = initializeApp(firebaseConfig);
-            const analytics = getAnalytics(app);
-            const db = getFirestore();
-            console.log(db);
-        </script>
-        
-        <script>
-        db.collection("items").get().then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-            console.log(`${doc.id} => ${doc.data()}`);
-            });
-        });
-        </script>
-
     <div class="bg-white w-full">
         <div class="header h-16 bg-gray-900 flex items-center">
             <div class="logo w-1/5 h-16 ml-10">
@@ -195,82 +163,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="main-section-deals mt-5">
+                <div class="main-section-deals mt-5 flex">
                     <h1 class="text-2xl font-bold text-gray-700 my-5">Hot Deals 🔥 </h1>
 
-                    <div class="main-section-products flex">
-                        <div class="main-product ">
-                            <div class="product-image w-48 h-52 bg-white rounded-lg p-4">
-                                <img class="w-full h-full object-contain" src="https://m.media-amazon.com/images/I/41V5KQ500IL.jpg" >
-                            </div>
-                            <div class="product-name text-gray-700 font-bold mt-2 text-sm">
-                                Nitendo switch(2019)
-                            </div>
-                            <div class="product-make text-green-700 font-bold">
-                                Nitendo
-                            </div>
-                            <div class="product-rating text-yellow-300 my-1">
-                                ⭐⭐⭐⭐⭐ 4.5
-                            </div>
-                            <div class="product-price font-bold text-gray-700">
-                                $290.00
-                            </div>
-                        </div>
-                        <div class="main-product ml-4 ">
-                            <div class="product-image w-48 h-52 bg-white rounded-lg p-4">
-                                <img class="w-full h-full object-contain" src="https://static.digit.in/product/284c81498a93a82db7b5db6600494c20bee4f18e.jpeg?tr=w-1200" >
-                            </div>
-                            <div class="product-name text-gray-700 font-bold mt-2 text-sm">
-                                I phone(2019)
-                            </div>
-                            <div class="product-make text-green-700 font-bold">
-                                Apple
-                            </div>
-                            <div class="product-rating text-yellow-300 my-1">
-                                ⭐⭐⭐⭐⭐ 4.7
-                            </div>
-                            <div class="product-price font-bold text-gray-700">
-                                $990.00
-                            </div>
-                        </div>
-                        <div class="main-product ml-4 ">
-                            <div class="product-image w-48 h-52 bg-white rounded-lg p-4">
-                                <img class="w-full h-full object-contain" src="https://images.samsung.com/is/image/samsung/in-full-hd-tv-te50fa-ua43te50fakxxl-frontblack-231881877?$720_576_PNG$" >
-                            </div>
-                            <div class="product-name text-gray-700 font-bold mt-2 text-sm">
-                                Smart HD TV(2020)
-                            </div>
-                            <div class="product-make text-green-700 font-bold">
-                                Samsung
-                            </div>
-                            <div class="product-rating text-yellow-300 my-1">
-                                ⭐⭐⭐⭐⭐ 4.0
-                            </div>
-                            <div class="product-price font-bold text-gray-700">
-                                $590.00
-                            </div>
-                        </div>
-                        <div class="main-product ml-4 ">
-                            <div class="product-image w-48 h-52 bg-white rounded-lg p-4">
-                                <img class="w-full h-full object-contain" src="https://cdn.shopify.com/s/files/1/0003/7565/2399/products/1_6f1f0328-6ce7-4269-8fdf-4272e2ba01b3_800x.jpg?v=1615889632" >
-                            </div>
-                            <div class="product-name text-gray-700 font-bold mt-2 text-sm">
-                                Headphone
-                            </div>
-                            <div class="product-make text-green-700 font-bold">
-                                Boat
-                            </div>
-                            <div class="product-rating text-yellow-300 my-1">
-                                ⭐⭐⭐⭐⭐ 3.0
-                            </div>
-                            <div class="product-price font-bold text-gray-700">
-                                $190.00
-                            </div>
-                            <div class="add-to-cart h-8 w-28 bg-yellow-500 flex items-center justify-center text-white rounded text-md cursor-pointer hover:bg-yellow-600">
-                                Add to cart
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
