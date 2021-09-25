@@ -1,5 +1,5 @@
 import {db} from "./firebase.js";
-import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore.js";
+import { collection, getDocs,getDoc, doc, setDoc ,updateDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore.js";
 
 async function  getItems(){
     const querySnapshot = await getDocs(collection(db, "items"));
@@ -13,16 +13,40 @@ async function  getItems(){
             rating:doc.data().rating,
             price:doc.data().price
         })
-        
-        generateItems(items);
     });
+    generateItems(items);
+    
+}
+async function addToCart(item){
+    console.log("add to cart function...")
+    //let cartItem = db.collection("cart-items").doc(item.id);
+    const cartItem = doc(db, "cart-items",item.id);
+    const docSnap = await getDoc(cartItem);
+ 
+        if(docSnap.exists()){
+            updateDoc(cartItem,{
+                quantity:docSnap.data().quantity+1
+            })
+        }else{
+            setDoc(cartItem,{
+                image:item.image,
+                name:item.name,
+                make:item.make,
+                rating:item.rating,
+                price:item.price,
+                quantity : 1
+            })
+        
+    }
+    
 }
 
 function generateItems(items){
-    let itemsHTML ="";
+    
     items.forEach((item)=>{
-        itemsHTML +=`
-        <div class="main-product ml-4 ">
+        let doc=document.createElement("div");
+        doc.classList.add("main-product", "mr-4");
+        doc.innerHTML=`
             <div class="product-image w-48 h-52 bg-white rounded-lg p-4">
                 <img class="w-full h-full object-contain" src="${item.image}" >
             </div>
@@ -36,16 +60,19 @@ function generateItems(items){
             ⭐⭐⭐⭐⭐ ${item.rating}
             </div>
             <div class="product-price font-bold text-gray-700">
-            $${item.price}
+            $${numeral(item.price).format("$0,0.00")}
+            
             </div>
-            <div class="add-to-cart h-8 w-28 bg-yellow-500 flex items-center justify-center text-white rounded text-md cursor-pointer hover:bg-yellow-600">
-            Add to cart
-            </div>
-        </div>
-
         `
-
+        let addToCartEl=document.createElement("div");
+        addToCartEl.classList.add("add-to-cart","h-8","w-28","bg-yellow-500","flex","items-center","justify-center","text-white","rounded","text-md","cursor-pointer","hover:bg-yellow-600")
+        addToCartEl.innerHTML="Add to Cart";
+        addToCartEl.addEventListener("click",function(){
+            addToCart(item)
+        })
+        doc.appendChild(addToCartEl);
+        document.querySelector(".main-section-products").appendChild(doc);
     })
-    document.querySelector(".main-section-deals").innerHTML = itemsHTML;
+  
 }
 getItems();

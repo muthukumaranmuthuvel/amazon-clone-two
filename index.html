@@ -11,8 +11,10 @@
         integrity="sha384-l0/0sn63N3mskDgRYJZA6Mogihu0VY3CusdLMiwpJ9LFPklOARUcOiWEIGGmFELx"
         crossorigin="anonymous">
     </script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
    <script type="module" src ="./firebase.js"></script>
     <script type="module" src="./script.js"></script>    
+    <script type="module" src="./header.js"></script>  
 
     
 </head>
@@ -42,9 +44,9 @@
                   <!-- Cart Icon-->
                   <a href="cart.html">
                   <div class="cart-icon relative h-10 w-10 bg-yellow-500 flex items-center justify-center rounded-xl">
-                    <div class="cart-item-number absolute -top-1 -right-1 h-4 w-4 bg-white rounded-full flex justify-center items-center text-gray-800 text-xs">
+                    <!-- <div class="cart-item-number absolute -top-1 -right-1 h-4 w-4 bg-white rounded-full flex justify-center items-center text-gray-800 text-xs">
                         1
-                    </div>  
+                    </div>   -->
                     <svg class="h-4 w-4 text-gray-600" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                       </svg>
@@ -163,9 +165,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="main-section-deals mt-5 flex">
+                <div class="main-section-deals mt-5">
                     <h1 class="text-2xl font-bold text-gray-700 my-5">Hot Deals 🔥 </h1>
+                    <div class="main-section-products flex">
 
+                    </div>
                     
                 </div>
             </div>
